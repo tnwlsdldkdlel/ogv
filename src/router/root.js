@@ -1,19 +1,21 @@
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
+import PublicRoute from "./publicRoute";
+import PrivateRoute from "./privateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
-const Loading = <div>Loading....</div>
 
 const Main = lazy(() => import("../pages/MainPage"))
 const Login = lazy(() => import("../pages/LoginPage"))
 
 const root = createBrowserRouter([
+
     {
         path: "",
-        element: <Suspense fallback={Loading}><Main /></Suspense>
+        element: <PrivateRoute><Main /></PrivateRoute>
     },
     {
         path: "login",
-        element: <Suspense fallback={Loading}><Login></Login> </Suspense>
+        element: <PublicRoute><Login /></PublicRoute>
 
     }
 ])
