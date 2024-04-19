@@ -23,20 +23,27 @@
     text-align: center;
 }
 
-.common .menu img {
+.common .menu .logo img {
     width: 200px;
     height: 100px;
 
 }
 
 .common .menu .menu-box {
-    border-radius: 20px;
-    background-color: #4AD9A4;
+    padding-top: 20%;
 }
 
 .common .menu .menu-list {
+    color: white;
     font-size: x-large;
     padding: 5%;
+}
+
+.common .menu .menu-list.active {
+    color: white;
+    font-size: x-large;
+    padding: 5%;
+    background: #4AD9A4;
 }
 
 .common .contents {
@@ -70,3 +77,104 @@
 .common .contents .content {
     width: 100%;
 }
+
+.main {
+    padding: 2%;
+}
+
+.main .top1 {
+    display: flex;
+}
+
+.main .top1 .rank-target {
+    padding: 2%;
+    width: 50%;
+}
+
+.main .top1 .rank-target .title {
+    font-weight: bolder;
+    font-size: x-large;
+    display: flex;
+}
+
+.main .top1 .rank-target .title .ordering {
+    font-size: small;
+    margin-left: auto;
+}
+
+.user-mgmt {
+    padding: 2%;
+}
+
+.user-mgmt .title {
+    padding-bottom: 1%;
+    display: flex;
+    font-size: x-large;
+    font-weight: 500;
+    width: 10%;
+}
+
+.user-mgmt .search-box {
+    background-color: #ced4da;
+    border-radius: 20px;
+    display: flex;
+}
+
+.user-mgmt .search-box .search-item {
+    padding: 2%;
+    width: 85%;
+    display: flex;
+}
+
+.spacer {
+    margin-right: 1%;
+}
+
+.user-mgmt .search-box .search-btn {
+    margin: auto;
+}
+
+.user-mgmt .content .btn {
+    padding-top: 1%;
+    text-align: right;
+}
+
+.user-mgmt .content .btn button {
+    margin-left: 1%;
+}
+
+.user-mgmt .add-content {
+    background-color: #ced4da;
+    border-radius: 20px;
+    padding: 1%;
+}
+
+.user-mgmt .add-content .data {
+    display: flex;
+    padding: 1%;
+}
+
+.user-mgmt .add-content .data .key {
+    font-weight: bolder;
+    width: 30%;
+}
+
+.user-mgmt .add-content .data .key .sub {
+    color: red;
+    font-size: small;
+}
+
+.user-mgmt .add-content .data .value {
+    width: 70%;
+}
+
+.user-mgmt .add-btn {
+    padding-top: 1%;
+    text-align: right;
+}
+
+.user-mgmt .add-btn button {
+    margin-left: 1%;
+}
+
+

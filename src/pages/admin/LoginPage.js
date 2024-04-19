@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
-import useCustomLogin from '../hooks/admin/useCustomLogin';
+import useCustomLogin from '../../hooks/admin/useCustomLogin';
 
 const initState = {
     id: "",
@@ -43,7 +43,7 @@ function LoginPage() {
                     if (result.data.code !== 200) {
                         alert("이메일과 패스워드를 확인해주세요.");
                     } else {
-                        moveToPath("/");
+                        moveToPath("/admin");
                     }
                 })
         } catch (error) {

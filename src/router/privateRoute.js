@@ -6,7 +6,7 @@ const privateRoute = ({ children }) => {
     const cookies = new Cookies();
     const isLogin = cookies.get("admin") !== undefined ? true : false;
 
-    return isLogin ? children : <Navigate to="/login"></Navigate>
+    return isLogin ? children : <Navigate to="/admin/login"></Navigate>
 }
 
 export default privateRoute 

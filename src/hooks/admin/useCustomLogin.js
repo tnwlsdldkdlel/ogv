@@ -21,7 +21,7 @@ const useCustomLogin = () => {
     }
 
     const moveToLoginReturn = () => {
-        return <Navigate replace to="/login" />;
+        return <Navigate replace to="/admin/login" />;
     }
 
     const exceptionHandle = (ex) => {
@@ -29,13 +29,13 @@ const useCustomLogin = () => {
         const errorStr = createSearchParams({ error: errorMsg }).toString()
         if (errorMsg === 'REQUIRE_LOGIN') {
             alert("로그인 해야만 합니다.")
-            navigate({ pathname: '/login', search: errorStr })
+            navigate({ pathname: '/admin/login', search: errorStr })
             return
         }
 
         if (ex.response.data.error === 'ERROR_ACCESSDENIED') {
             alert("해당 메뉴를 사용할 수 있는 권한이 없습니다.")
-            navigate({ pathname: '/login', search: errorStr })
+            navigate({ pathname: '/admin/login', search: errorStr })
             return
         }
     }

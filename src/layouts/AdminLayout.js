@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Menus from '../components/Menu';
+import Menus from '../components/common/Menu';
 import { useSelector } from 'react-redux';
 import Menu from '@mui/material/Menu';
 import { Avatar, Divider, IconButton, MenuItem } from '@mui/material';
@@ -19,7 +19,7 @@ const AdminLayout = ({ children }) => {
     return (
         <div className="common">
             <div className="menu">
-                <img src="/image/menu-logo.png" />
+                <div className="logo"><img src="/image/menu-logo.png" /></div>
                 <Menus></Menus>
             </div>
             <div className="contents">
@@ -77,10 +77,10 @@ const AdminLayout = ({ children }) => {
                             <MenuItem onClick={handleClose}>
                                 <Avatar /> 계정확인
                             </MenuItem>
+                            <Divider />
                             <MenuItem onClick={handleClose}>
                                 <Logout /> Logout
                             </MenuItem>
-                            {/* <Divider /> */}
                         </Menu>
                     </div>
                 </div>
