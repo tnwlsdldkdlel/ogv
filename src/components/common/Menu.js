@@ -26,7 +26,7 @@ const Menu = () => {
     return (
         <div className="menu-box">
             <div className="menu-list" onMouseLeave={handelMouseLeave} onMouseEnter={handelMouseEnter} onClick={() => handleMove('/admin/userMgmt')}>유저관리</div>
-            <div className="menu-list" onMouseLeave={handelMouseLeave} onMouseEnter={handelMouseEnter} onClick={() => handleMove('userMgmt')}>영화관관리</div>
+            <div className="menu-list" onMouseLeave={handelMouseLeave} onMouseEnter={handelMouseEnter} onClick={() => handleMove('/admin/cinemaMgmt')}>영화관관리</div>
             <div className="menu-list" onMouseLeave={handelMouseLeave} onMouseEnter={handelMouseEnter} onClick={() => handleMove('userMgmt')}>영화관리</div>
             <div className="menu-list" onMouseLeave={handelMouseLeave} onMouseEnter={handelMouseEnter} onClick={() => handleMove('userMgmt')}>광고관리</div>
             <div className="menu-list" onMouseLeave={handelMouseLeave} onMouseEnter={handelMouseEnter} onClick={() => handleMove('userMgmt')}>스위트관리</div>

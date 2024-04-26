@@ -103,7 +103,7 @@
 }
 
 .user-mgmt {
-    padding: 2%;
+    padding: 1%;
 }
 
 .user-mgmt .title {
@@ -111,7 +111,18 @@
     display: flex;
     font-size: x-large;
     font-weight: 500;
-    width: 10%;
+    width: 100%;
+}
+
+.user-mgmt .title .tab div button.active {
+    color: #4AD9A4;
+    font-weight: bolder;
+    border-color: #ced4da;
+}
+
+.user-mgmt .title .tab div button {
+    color: black;
+    border-color: #ced4da;
 }
 
 .user-mgmt .search-box {
@@ -132,6 +143,37 @@
 
 .user-mgmt .search-box .search-btn {
     margin: auto;
+}
+
+.user-mgmt .content {
+    padding-top: 2%;
+}
+
+.user-mgmt .content table tbody tr td {
+    padding: unset;
+}
+
+.user-mgmt .content table thead tr th {
+    padding: unset;
+}
+
+.user-mgmt .content .pagination {
+    display: ruby-text;
+    padding-top: 2%;
+}
+
+.user-mgmt .content .pagination div {
+    margin: unset;
+}
+
+.user-mgmt .content .pagination span {
+    font-size: larger;
+    padding: 1%;
+}
+
+.user-mgmt .content .pagination span.active {
+    font-weight: bolder;
+    color: #4AD9A4;
 }
 
 .user-mgmt .content .btn {
@@ -176,5 +218,3 @@
 .user-mgmt .add-btn button {
     margin-left: 1%;
 }
-
-

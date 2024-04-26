@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { createSearchParams, useNavigate, useSearchParams } from "react-router-dom"
-
-const getNum = (param, defaultValue) => {
-    if (!param) {
-        return defaultValue;
-    }
-
-    return parseInt(param);
-}
+import { getNum, getString } from "../../util/Util";
 
 const useCustomMove = () => {
     const navigate = useNavigate();
@@ -16,11 +9,13 @@ const useCustomMove = () => {
 
     const page = getNum(queryParams.get("page"), 1);
     const size = getNum(queryParams.get("size"), 10);
+    const search = getString(queryParams.get("search"), "");
+    const searchTarget = getString(queryParams.get("ALL"), "");
 
     // page=3&size=10
-    const queryDefault = createSearchParams({ page, size }).toString();
+    const queryDefault = createSearchParams({ page, size, search, searchTarget }).toString();
 
-    const moveToList = (pageParam) => {
+    const moveToUserMgmtList = (pageParam) => {
         let queryStr = "";
 
         // 요청 페이지가 있을 경우.
@@ -28,24 +23,16 @@ const useCustomMove = () => {
             const pageNum = getNum(pageParam.page, 1);
             const sizeNum = getNum(pageParam.size, 10);
 
-            queryStr = createSearchParams({ page: pageNum, size: sizeNum }).toString();
+            queryStr = createSearchParams({ page: pageNum, size: sizeNum, search: search, searchTarget: searchTarget }).toString();
         } else {
             queryStr = queryDefault;
         }
 
         setRefresh(!refresh);
-        navigate({ pathname: `../list`, search: queryStr })
+        navigate({ pathname: `/admin/userMgmt`, search: queryStr })
     }
 
-    const moveToModify = (seq) => {
-        navigate({ pathname: `../modify/${seq}`, search: queryDefault })
-    }
-
-    const moveToRead = (seq) => {
-        navigate({ pathname: `../read/${seq}`, search: queryDefault })
-    }
-
-    return { moveToList, moveToModify, moveToRead, page, size, refresh }
+    return { moveToUserMgmtList, page, size, refresh, search, searchTarget }
 }
 
 export default useCustomMove

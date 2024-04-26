@@ -5,11 +5,10 @@ import { postUser } from '../../../api/admin/userMgmtApi';
 import { useNavigate } from 'react-router-dom';
 
 const initState = {
-    type: "USER",
-    id: null,
-    name: null,
-    role: "HEAD",
-    branch: "A-01"
+    id: "",
+    name: "",
+    role: "USER",
+    branch: ""
 }
 
 function AddPage() {
@@ -29,7 +28,7 @@ function AddPage() {
     const handleSubmit = () => {
         postUser(user)
             .then(result => {
-                if (result.data.code === 200) {
+                if (result.code === 200) {
                     alert("유저가 등록되었습니다.");
                     navigator("/admin/userMgmt");
                 } else {
@@ -48,9 +47,10 @@ function AddPage() {
                     <div className="data">
                         <div className="key">구분</div>
                         <div className="value">
-                            <Select name="type" defaultValue={user.type} onChange={handleChangeUser}>
+                            <Select name="role" defaultValue={user.role} onChange={handleChangeUser}>
                                 <MenuItem value="USER">유저</MenuItem >
-                                <MenuItem value="ADMIN">관리자</MenuItem >
+                                <MenuItem value="HEAD">본사 관리자</MenuItem >
+                                <MenuItem value="BRANCH">지점 관리자</MenuItem >
                             </Select>
                         </div>
                     </div>
@@ -68,30 +68,17 @@ function AddPage() {
                             <Input fullWidth name="name" onChange={handleChangeUser} />
                         </div>
                     </div>
-                    {user.type !== "ADMIN" ? <></> :
+                    {user.role !== "BRANCH" ? <></> :
                         <>
                             <div className="data">
-                                <div className="key">관리자 유형</div>
+                                <div className="key">지점</div>
                                 <div className="value">
-                                    <Select name="role" defaultValue={user.role} onChange={handleChangeUser}>
-                                        <MenuItem value="HEAD">본사</MenuItem>
-                                        <MenuItem value="BRANCH">지점 관리자</MenuItem>
+                                    <Select defaultValue={"A-01"} name="branch" onChange={handleChangeUser}>
+                                        <MenuItem value="A-01">서울 신림</MenuItem>
+                                        <MenuItem value="A-02">경기도 시흥</MenuItem>
                                     </Select>
                                 </div>
                             </div>
-                            {user.role === "HEAD" ? <></> :
-                                <>
-                                    <div className="data">
-                                        <div className="key">지점</div>
-                                        <div className="value">
-                                            <Select defaultValue={user.branch} name="branch" onChange={handleChangeUser}>
-                                                <MenuItem value="A-01">서울 신림</MenuItem>
-                                                <MenuItem value="A-02">경기도 시흥</MenuItem>
-                                            </Select>
-                                        </div>
-                                    </div>
-                                </>
-                            }
                         </>
                     }
                 </div>
@@ -100,7 +87,7 @@ function AddPage() {
                     <Button variant="contained" color="success" sx={{ backgroundColor: "#4AD9A4", color: "black" }} onClick={() => handleSubmit()}>
                         등록
                     </Button>
-                    <Button variant="contained" sx={{ color: "black", backgroundColor: "#ced4da" }} onClick={() => handleMove('add')}>
+                    <Button variant="contained" sx={{ color: "black", backgroundColor: "#ced4da" }} onClick={() => handleMove('/admin/userMgmt')}>
                         취소
                     </Button>
                 </div>

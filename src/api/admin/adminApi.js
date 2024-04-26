@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_SERVER_HOST } from "../../common/values";
+import { API_SERVER_HOST } from "../../util/values";
 
 const prefix = `${API_SERVER_HOST}/v1/admin`;
 

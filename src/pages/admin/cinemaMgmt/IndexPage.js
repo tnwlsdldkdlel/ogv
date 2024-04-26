@@ -1,10 +1,8 @@
 import React from 'react'
 import AdminLayout from '../../../layouts/AdminLayout'
-import useCustomMove from '../../../hooks/admin/useCustomMove';
-import SearchComponents from '../../../components/userMgmt/SearchComponents';
-import ListComponents from '../../../components/userMgmt/ListComponents';
-import ButtonComponent from '../../../components/userMgmt/ButtonComponent';
-import Pagination from '../../../components/common/Pagination';
+import SearchComponents from '../../../components/userMgmt/SearchComponents'
+import ListComponents from '../../../components/cinemaMgmt/ListComponents'
+import useCustomMove from '../../../hooks/admin/useCustomMove'
 
 const initState = {
     data: [],
@@ -24,14 +22,14 @@ const initState = {
 
 function IndexPage() {
     const [check, setCheck] = React.useState([]);
-    const [user, setUser] = React.useState(initState);
+    const [cinema, setCinema] = React.useState(initState);
     const { page, size, refresh } = useCustomMove();
 
     const handleStateUpdate = (target, param) => {
         if (target === "check") {
             setCheck(param);
-        } else if (target === "user") {
-            setUser(param);
+        } else if (target === "cinema") {
+            setCinema(param);
         }
     };
 
@@ -39,13 +37,13 @@ function IndexPage() {
         <AdminLayout>
             <div className="user-mgmt">
                 <div className="title">
-                    유저관리
+                    영화관관리
                 </div>
                 <SearchComponents></SearchComponents>
                 <div className="content">
-                    <ListComponents checkParam={check} userParam={user} pageParam={{ page, size, refresh }} onUpdateState={handleStateUpdate}></ListComponents>
-                    <Pagination pageParam={user.page}></Pagination>
-                    <ButtonComponent checkParam={check}></ButtonComponent>
+                    <ListComponents checkParam={check} userParam={cinema} pageParam={{ page, size, refresh }} onUpdateState={handleStateUpdate}></ListComponents>
+                    {/* <Pagination pageParam={user.page}></Pagination>
+                    <ButtonComponent checkParam={check}></ButtonComponent> */}
                 </div>
             </div>
         </AdminLayout >
