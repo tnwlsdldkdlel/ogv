@@ -208,6 +208,7 @@
 
 .user-mgmt .add-content .data .value {
     width: 70%;
+    display: flex;
 }
 
 .user-mgmt .add-btn {
@@ -218,3 +219,17 @@
 .user-mgmt .add-btn button {
     margin-left: 1%;
 }
+
+.branch-dialog .content {
+    display: flex;
+    width: 400px;
+}
+
+.branch-dialog .content .key {
+    width: 30%;
+}
+
+.branch-dialog .content .value {
+    width: 70%;
+}
+

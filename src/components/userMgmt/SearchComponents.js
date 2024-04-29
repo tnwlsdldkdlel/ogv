@@ -14,7 +14,6 @@ function SearchComponents() {
 
     const handleSearchParam = (e) => {
         searchParam[e.target.name] = e.target.value;
-
         setSearchParam({ ...searchParam });
     }
 

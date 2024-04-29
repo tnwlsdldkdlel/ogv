@@ -3,6 +3,7 @@ import AdminLayout from '../../../layouts/AdminLayout'
 import SearchComponents from '../../../components/userMgmt/SearchComponents'
 import ListComponents from '../../../components/cinemaMgmt/ListComponents'
 import useCustomMove from '../../../hooks/admin/useCustomMove'
+import ButtonComponent from '../../../components/cinemaMgmt/ButtonComponent'
 
 const initState = {
     data: [],
@@ -42,8 +43,8 @@ function IndexPage() {
                 <SearchComponents></SearchComponents>
                 <div className="content">
                     <ListComponents checkParam={check} userParam={cinema} pageParam={{ page, size, refresh }} onUpdateState={handleStateUpdate}></ListComponents>
-                    {/* <Pagination pageParam={user.page}></Pagination>
-                    <ButtonComponent checkParam={check}></ButtonComponent> */}
+                    {/* <Pagination pageParam={user.page}></Pagination> */}
+                    <ButtonComponent checkParam={check}></ButtonComponent>
                 </div>
             </div>
         </AdminLayout >
