@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AdminLayout from '../../layouts/AdminLayout.js';
-import { Table, TableBody, TableCell, TableRow } from '@mui/material';
 import MovieRank from '../../components/main/MovieRank.js';
 
 

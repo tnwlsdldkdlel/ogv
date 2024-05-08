@@ -3,6 +3,7 @@ import PublicRoute from "../publicRoute";
 import PrivateRoute from "../privateRoute";
 import userMgmtRouter from "./userMgmtRouter";
 import cinemaRouter from "./cinemaRouter";
+import movieRouter from "./movieRouter";
 
 const Main = lazy(() => import("../../pages/admin/MainPage"))
 const AdminLogin = lazy(() => import("../../pages/admin/LoginPage"))
@@ -20,13 +21,17 @@ const adminRouter = () => {
 
         },
         {
-            path: "userMgmt",
+            path: "user",
             children: userMgmtRouter()
 
         },
         {
-            path: "cinemaMgmt",
+            path: "cinema",
             children: cinemaRouter()
+        },
+        {
+            path: "movie",
+            children: movieRouter()
         }
     ]
 }

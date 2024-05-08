@@ -10,7 +10,7 @@ const initSearchParam = {
 
 function SearchComponents() {
     const [searchParam, setSearchParam] = React.useState(initSearchParam);
-    const { page, size, refresh, type, moveToUserMgmtList } = useCustomMove();
+    const { page, size, type, moveToUserMgmtList } = useCustomMove();
 
     const handleSearchParam = (e) => {
         searchParam[e.target.name] = e.target.value;

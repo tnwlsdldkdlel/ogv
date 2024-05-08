@@ -58,7 +58,7 @@ function AddPage() {
                     <Button variant="contained" color="success" sx={{ backgroundColor: "#4AD9A4", color: "black" }}>
                         등록
                     </Button>
-                    <Button variant="contained" sx={{ color: "black", backgroundColor: "#ced4da" }} onClick={() => handleMove('/admin/cinemaMgmt')}>
+                    <Button variant="contained" sx={{ color: "black", backgroundColor: "#ced4da" }} onClick={() => handleMove('/admin/cinema')}>
                         취소
                     </Button>
                 </div>

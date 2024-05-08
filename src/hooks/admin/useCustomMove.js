@@ -29,10 +29,27 @@ const useCustomMove = () => {
         }
 
         setRefresh(!refresh);
-        navigate({ pathname: `/admin/userMgmt`, search: queryStr })
+        navigate({ pathname: `/admin/user`, search: queryStr })
     }
 
-    return { moveToUserMgmtList, page, size, refresh, search, searchTarget }
+    const moveToMovieMgmtList = (pageParam) => {
+        let queryStr = "";
+
+        // 요청 페이지가 있을 경우.
+        if (pageParam) {
+            const pageNum = getNum(pageParam.page, 1);
+            const sizeNum = getNum(pageParam.size, 10);
+
+            queryStr = createSearchParams({ page: pageNum, size: sizeNum, search: search, searchTarget: searchTarget }).toString();
+        } else {
+            queryStr = queryDefault;
+        }
+
+        setRefresh(!refresh);
+        navigate({ pathname: `/admin/movie`, search: queryStr })
+    }
+
+    return { moveToUserMgmtList, moveToMovieMgmtList, page, size, refresh, search, searchTarget }
 }
 
 export default useCustomMove

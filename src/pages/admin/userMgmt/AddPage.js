@@ -30,7 +30,7 @@ function AddPage() {
             .then(result => {
                 if (result.code === 200) {
                     alert("유저가 등록되었습니다.");
-                    navigator("/admin/userMgmt");
+                    navigator("/admin/user");
                 } else {
                     alert("데이터를 다시 확인해 주세요.");
                 }
