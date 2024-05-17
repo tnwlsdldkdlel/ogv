@@ -16,7 +16,7 @@ import { converObjToFormData, dateFormat, isEmpty, isEmptyObj, today } from '../
 const initState = {
     name: "",
     director: "",
-    genre: [],
+    genres: [],
     actor: [],
     start: today(),
     end: today(),
@@ -40,7 +40,7 @@ const VisuallyHiddenInput = styled('input')({
 const initError = {
     name: false,
     director: false,
-    genre: false,
+    genres: false,
     actor: false,
     start: today(),
     end: today(),
@@ -71,7 +71,7 @@ function AddPage() {
         getGenre()
             .then(result => {
                 if (result.code === 200) {
-                    movie["genre"].push(result.data[0].code);
+                    movie["genres"].push(result.data[0].code);
                     setMovie({ ...movie })
                     setGenre(result.data);
                 }
@@ -211,7 +211,7 @@ function AddPage() {
             target: { value },
         } = event;
 
-        setMovie({ ...movie, genre: typeof value === "string" ? value.split(",") : value });
+        setMovie({ ...movie, genres: typeof value === "string" ? value.split(",") : value });
     };
 
     return (
@@ -230,17 +230,12 @@ function AddPage() {
                     <div className="data">
                         <div className="key">장르</div>
                         <div className="value">
-                            {/* <Select name="genre" value={movie.genre} onChange={handelMovie}>
-                                {genre.map((row) => (
-                                    <MenuItem value={parseInt(`${row.code}`)}>{row.name}</MenuItem >
-                                ))}
-                            </Select> */}
                             <Select
                                 labelId="demo-multiple-chip-label"
                                 id="demo-multiple-chip"
                                 multiple
-                                name="genre"
-                                value={movie.genre}
+                                name="genres"
+                                value={movie.genres}
                                 onChange={handleGenre}
                                 input={<OutlinedInput id="select-multiple-chip" />}
                                 renderValue={(selected) => (
@@ -351,7 +346,7 @@ function AddPage() {
                     <Button variant="contained" color="success" sx={{ backgroundColor: "#4AD9A4", color: "black" }} onClick={handelSave}>
                         등록
                     </Button>
-                    <Button variant="contained" sx={{ color: "black", backgroundColor: "#ced4da" }}>
+                    <Button variant="contained" sx={{ color: "black", backgroundColor: "#ced4da" }} onClick={moveToMovieMgmtList}>
                         취소
                     </Button>
                 </div>

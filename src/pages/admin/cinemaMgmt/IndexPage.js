@@ -1,9 +1,9 @@
 import React from 'react'
 import AdminLayout from '../../../layouts/AdminLayout'
-import SearchComponents from '../../../components/userMgmt/SearchComponents'
 import ListComponents from '../../../components/cinemaMgmt/ListComponents'
 import useCustomMove from '../../../hooks/admin/useCustomMove'
 import ButtonComponent from '../../../components/cinemaMgmt/ButtonComponent'
+import SearchComponents from '../../../components/cinemaMgmt/SearchComponents'
 
 const initState = {
     data: [],

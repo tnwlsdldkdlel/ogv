@@ -26,6 +26,15 @@ export const today = () => {
     let month = today.getMonth() + 1;  // 월
     let date = today.getDate();  // 날짜
 
+    if (month / 10 < 1) {
+        month = 0 + "" + month
+    }
+
+    if (date / 10 < 1) {
+        date = 0 + "" + date
+    }
+
+
     return year + '-' + month + '-' + date
 }
 
@@ -87,7 +96,8 @@ export const converObjToFormData = (obj) => {
     const keys = Object.keys(obj);
     const formData = new FormData();
 
-    keys.forEach(key => {;
+    keys.forEach(key => {
+        ;
         formData.append(key, obj[key]);
     })
 

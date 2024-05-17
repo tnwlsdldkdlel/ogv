@@ -1,18 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { getUserList } from '../../api/admin/userMgmtApi';
+import React, { useEffect, useState } from 'react'
 import useCustomMove from '../../hooks/admin/useCustomMove';
 import { Checkbox, Table, TableCell, TableHead, TableRow, TableBody } from '@mui/material';
-import { userRole } from '../../../src/util/values';
 import { useNavigate } from 'react-router-dom';
 import { getMovieList } from '../../api/admin/movieMgmtApi';
 
-const initSearchParam = {
-    search: "",
-    searchTarget: "ALL"
-}
-
-function ListComponents({ checkParam, onUpdateState, userParam }) {
-    const [searchParam, setSearchParam] = React.useState(initSearchParam);
+function ListComponents({ checkParam, onUpdateState, movieParam, searchParam }) {
     const { page, size, refresh } = useCustomMove();
     const navigator = useNavigate();
     const [allCheck, setAllCheck] = useState(false);
@@ -21,16 +13,17 @@ function ListComponents({ checkParam, onUpdateState, userParam }) {
         getMovieList({ page, size, searchParam }).then(result => {
             onUpdateState("movie", result);
         })
-    }, [page, size, refresh]);
+    }, [page, size, refresh, searchParam.search, searchParam.searchTarget, searchParam.start, searchParam.end]);
 
     const handleMove = (path) => {
         navigator(path);
     }
 
     const handleCheckBox = (e) => {
+        console.log()
         if (e.target.name === "ALL") {
             if (e.target.checked) {
-                const newCheck = userParam.data.map((data) => data.seq);
+                const newCheck = movieParam.data.map((data) => data.seq);
                 onUpdateState("check", newCheck);
                 setAllCheck(true);
             } else {
@@ -48,7 +41,7 @@ function ListComponents({ checkParam, onUpdateState, userParam }) {
                 }
 
                 // 모두 체크 되어있으민 all 버튼 체크
-                if (userParam.data.length === (checkParam.length + 1)) {
+                if (movieParam.data.length === (checkParam.length + 1)) {
                     setAllCheck(true);
                 }
             } else {
@@ -83,29 +76,28 @@ function ListComponents({ checkParam, onUpdateState, userParam }) {
             <TableHead>
                 <TableRow key={"title"}>
                     <TableCell><Checkbox checked={allCheck} name="ALL" onClick={handleCheckBox} /></TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>장르</TableCell>
-                    <TableCell>감독</TableCell>
-                    <TableCell>상영기간</TableCell>
-                    <TableCell>등록일</TableCell>
+                    <TableCell align="center">Name</TableCell>
+                    <TableCell align="center">장르</TableCell>
+                    <TableCell align="center">감독</TableCell>
+                    <TableCell align="center">상영기간</TableCell>
+                    <TableCell align="center">등록일</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
                 {
-                    userParam.data == null ? React.Fragment :
+                    movieParam.data == null ? React.Fragment :
 
-                        userParam.data.map((row, index) => (
+                        movieParam.data.map((row, index) => (
                             <>
                                 <TableRow key={row.seq} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                                     <TableCell>
                                         <Checkbox checked={checkParam.filter(data => data === row.seq).length > 0} name={`btn_${row.seq}`} onClick={handleCheckBox} />
                                     </TableCell>
-                                    <TableCell onClick={() => handleMove(`/admin/userMgmt/info/${row.seq}`)}>{row.name}</TableCell>
-                                    <TableCell onClick={() => handleMove(`/admin/userMgmt/info/${row.seq}`)}>{row.id}</TableCell>
-                                    <TableCell onClick={() => handleMove(`/admin/userMgmt/info/${row.seq}`)}>{userRole[row.role]}
-                                        {row.branch !== null ? <>({row.branch})</> : null}
-                                    </TableCell>
-                                    <TableCell onClick={() => handleMove(`/admin/userMgmt/${row.seq}`)}>{row.createdAtStr}</TableCell>
+                                    <TableCell align="center" onClick={() => handleMove(`/admin/movie/info/${row.seq}`)}>{row.name}</TableCell>
+                                    <TableCell align="center" onClick={() => handleMove(`/admin/movie/info/${row.seq}`)}>{row.genre}</TableCell>
+                                    <TableCell align="center" onClick={() => handleMove(`/admin/movie/info/${row.seq}`)}>{row.director}</TableCell>
+                                    <TableCell align="center" onClick={() => handleMove(`/admin/movie/info/${row.seq}`)}>{row.start} ~ {row.end}</TableCell>
+                                    <TableCell align="center" onClick={() => handleMove(`/admin/movie/info/${row.seq}`)}>{row.createdAtStr}</TableCell>
                                 </TableRow>
                             </>
                         ))

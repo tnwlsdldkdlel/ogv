@@ -40,7 +40,7 @@ const useCustomMove = () => {
             const pageNum = getNum(pageParam.page, 1);
             const sizeNum = getNum(pageParam.size, 10);
 
-            queryStr = createSearchParams({ page: pageNum, size: sizeNum, search: search, searchTarget: searchTarget }).toString();
+            queryStr = createSearchParams({ page: pageNum, size: sizeNum, search: pageParam.search, searchTarget: pageParam.searchTarget, start: pageParam.start, end: pageParam.end }).toString();
         } else {
             queryStr = queryDefault;
         }

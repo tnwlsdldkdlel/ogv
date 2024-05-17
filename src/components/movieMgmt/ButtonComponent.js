@@ -1,9 +1,7 @@
 import { Button } from '@mui/material'
 import React from 'react'
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import { useNavigate } from 'react-router-dom';
-import { deleteUser } from '../../api/admin/userMgmtApi';
+import { removeMovie } from '../../api/admin/movieMgmtApi';
 
 function ButtonComponent({ checkParam }) {
     const navigator = useNavigate();
@@ -13,14 +11,14 @@ function ButtonComponent({ checkParam }) {
     }
 
     const handeleRemove = () => {
-        deleteUser(checkParam)
+        removeMovie(checkParam)
             .then(result => {
                 if (result.code === 200) {
                     alert("삭제되었습니다.");
                     window.location.reload();
                 }
             }
-            );
+        );
     }
 
     return (

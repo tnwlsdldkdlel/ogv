@@ -31,15 +31,17 @@ function SearchComponents() {
                 </Select>
                 <div className="spacer"></div>
                 <Input placeholder="Searching..." fullWidth name="search" onChange={handleSearchParam} />
+
+                <div className="search-btn">
+                    <Button sx={{ background: '#4AD9A4', color: 'black' }}
+                        variant="contained" size="large"
+                        startIcon={<SearchIcon />}
+                        onClick={handleSearch}>
+                        Search
+                    </Button>
+                </div>
             </div>
-            <div className="search-btn">
-                <Button sx={{ background: '#4AD9A4', color: 'black' }}
-                    variant="contained" size="large"
-                    startIcon={<SearchIcon />}
-                    onClick={handleSearch}>
-                    Search
-                </Button>
-            </div></div>
+        </div>
     )
 }
 

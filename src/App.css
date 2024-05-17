@@ -127,11 +127,10 @@
 .user-mgmt .search-box {
     background-color: #ced4da;
     border-radius: 20px;
-    display: flex;
 }
 
 .user-mgmt .search-box .search-item {
-    padding: 2%;
+    padding: 1.5%;
     width: 85%;
     display: flex;
 }

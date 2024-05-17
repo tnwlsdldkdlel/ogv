@@ -1,4 +1,4 @@
-import { Button, Input, MenuItem, Select } from '@mui/material'
+import { Button, Input, InputAdornment, MenuItem, Select } from '@mui/material'
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import useCustomMove from '../../hooks/admin/useCustomMove';
@@ -31,16 +31,19 @@ function SearchComponents() {
                     <MenuItem value={"NAME"}>NAME</MenuItem>
                 </Select>
                 <div className="spacer"></div>
-                <Input placeholder="Searching..." fullWidth name="search" onChange={handleSearchParam} />
+                <Input
+                    name="search"
+                    onChange={handleSearchParam}
+                    placeholder="Searching..."
+                    fullWidth
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <SearchIcon onClick={handleSearch} />
+                        </InputAdornment>
+                    }
+                />
             </div>
-            <div className="search-btn">
-                <Button sx={{ background: '#4AD9A4', color: 'black' }}
-                    variant="contained" size="large"
-                    startIcon={<SearchIcon />}
-                    onClick={handleSearch}>
-                    Search
-                </Button>
-            </div></div>
+        </div>
     )
 }
 

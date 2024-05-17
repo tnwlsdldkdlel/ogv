@@ -15,9 +15,24 @@ export const postMovie = async (movie) => {
 
 export const getMovieList = async (pageParam) => {
     const { page, size, searchParam } = pageParam;
-    const { search, searchTarget } = searchParam;
+    const { search, searchTarget, start, end } = searchParam;
     const result = await axios.get(`${prefix}`,
-        { params: { page, size, search, searchTarget } });
+        { params: { page, size, search, searchTarget, start, end } });
 
+    return result.data;
+}
+
+export const removeMovie = async (movie) => {
+    const result = await axios.delete(`${prefix}`, { data: { seq: movie } });
+    return result.data;
+}
+
+export const getMovieInfo = async (seq) => {
+    const result = await axios.get(`${prefix}/${seq}`);
+    return result.data;
+}
+
+export const updateMovie = async (movie) => {
+    const result = await axios.put(`${prefix}/${movie.seq}`, movie);
     return result.data;
 }
